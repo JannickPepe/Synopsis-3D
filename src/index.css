@@ -39,4 +39,6 @@ display:flex;
 flex-direction:row;
 }
 
-.colors div {padding:8px;}
+.colors div {
+  padding:8px;
+}
