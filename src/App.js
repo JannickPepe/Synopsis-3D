@@ -9,9 +9,9 @@ import { OrbitControls, useGLTF } from '@react-three/drei'; // Allow us to rotat
 function Model({ ...props }) {
   const group = useRef()
   const { nodes, materials } = useGLTF('/shoe.gltf')
-  // Have the group wrapper around the mesh property for each materials
+  // Have the group wrapper around the mesh property for each materials -Also set the size of the model with Scale
   return (
-    <group ref={group} {...props} dispose={null}>
+    <group ref={group} {...props} dispose={null} scale={3}>
       <mesh geometry={nodes.shoe.geometry} material={materials.laces} />
       <mesh geometry={nodes.shoe_1.geometry} material={materials.mesh} />
       <mesh geometry={nodes.shoe_2.geometry} material={materials.caps} />
@@ -44,10 +44,17 @@ function App() {
         <div className="card">
             <div className="product-canvas">
               <Canvas>
-                {/*When rendering 3D models you need this for error finder/screener*/}
+                {/*When rendering 3D models you need this for error finder/screener
+                  Inside Suspense have ambientLight property and your Model
+                  Then it will now be displayed in statis - for now
+                  Add another light with spotLight different property values
+                  With Orbital control you can now rotate with your property values
+                */}
                 <Suspense fallback={null}>
                   <ambientLight></ambientLight>
+                  <spotLight intensity={0.9} angle={0.1} penumbra={1} position={[10,15,10]} castShadow></spotLight>
                   <Model></Model>
+                  <OrbitControls enablePan={true} enableZoom={true}> </OrbitControls>
                 </Suspense>
               </Canvas>
             </div>
