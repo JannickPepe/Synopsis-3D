@@ -42,3 +42,15 @@ flex-direction:row;
 .colors div {
   padding:8px;
 }
+
+input{
+  display:block;
+}
+
+label{
+  color:black;
+}
+
+h2{
+  color: black;
+}

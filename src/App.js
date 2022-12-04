@@ -11,17 +11,17 @@ function Model({ ...props }) {
   const { nodes, materials } = useGLTF('/shoe.gltf')
   // Have the group wrapper around the mesh property for each materials -Also set the size of the model with Scale
   // With material-color, set the default color of the selected proptery material
-  // Instead of "red" we can now add our props.customColor onto mesh ect for the props we have in the Model
+  // Instead of "red" we can now add our props.customColor onto mesh ect for the props we have in the Model so we can use the color picker
   return (
     <group ref={group} {...props} dispose={null} scale={3}>
       <mesh geometry={nodes.shoe.geometry} material={materials.laces} material-color={props.customColors.laces}/>
       <mesh geometry={nodes.shoe_1.geometry} material={materials.mesh} material-color={props.customColors.mesh} />
-      <mesh geometry={nodes.shoe_2.geometry} material={materials.caps} material-color={"blue"} />
-      <mesh geometry={nodes.shoe_3.geometry} material={materials.inner} material-color={"blue"} />
+      <mesh geometry={nodes.shoe_2.geometry} material={materials.caps} material-color={props.customColors.sole} />
+      <mesh geometry={nodes.shoe_3.geometry} material={materials.inner} material-color={props.customColors.mesh} />
       <mesh geometry={nodes.shoe_4.geometry} material={materials.sole} material-color={props.customColors.sole} />
       <mesh geometry={nodes.shoe_5.geometry} material={materials.stripes} material-color={props.customColors.stripes} />
-      <mesh geometry={nodes.shoe_6.geometry} material={materials.band} material-color={"blue"} />
-      <mesh geometry={nodes.shoe_7.geometry} material={materials.patch} material-color={"blue"} />
+      <mesh geometry={nodes.shoe_6.geometry} material={materials.band} material-color={props.customColors.stripes} />
+      <mesh geometry={nodes.shoe_7.geometry} material={materials.patch} material-color={props.customColors.sole} />
     </group>
   )
 }
@@ -69,7 +69,7 @@ function App() {
                 <Suspense fallback={null}>
                   <ambientLight></ambientLight>
                   <spotLight intensity={0.9} angle={0.1} penumbra={1} position={[10,15,10]} castShadow></spotLight>
-                  <Model customColors={{mesh:mesh, stripes: "blue" , sole: "white", laces: "red"}}></Model>
+                  <Model customColors={{mesh:mesh, stripes:stripes, sole:sole, laces:laces}}></Model>
                   <OrbitControls enablePan={true} autoRotate={false} enableZoom={true} ></OrbitControls>
                 </Suspense>
               </Canvas>
@@ -78,24 +78,24 @@ function App() {
             {/* for each property object we will have the onChange props onto each object and have the prop value onto the object prop as well*/}
             <div className='colors'>
               <div>
-                <input type="color" id="mesh" name="mesh" value={mesh} onChange={(e) => setMesh(e.target.value)}/>
-                    <label for="mesh">Main</label>
+                <label for="mesh">Main:</label>
+                <input type="color" id="mesh" name="mesh" value={mesh} onChange={(e) => setMesh(e.target.value)} />
               </div>
               <div>
-                <input type="color" id="stripes" name="stripes" value="#f6b73c" />
-                    <label for="stripes">Stripes</label>
-                </div>
-                <div>
-                  <input type="color" id="sole" name="sole" value="#f6b73c" />
-                    <label for="sole">Sole</label>
-                </div>
-                <div>
-                  <input type="color" id="laces" name="laces" value="#00FFFF" />
-                    <label for="laces">Laces</label>
-                </div>
+                <label for="stripes">Stripes:</label>
+                <input type="color" id="stripes" name="stripes" value={stripes} onChange={(e) => setStripes(e.target.value)} />
+              </div>
+              <div>
+                <label for="sole">Sole:</label>
+                <input type="color" id="sole" name="sole" value={sole} onChange={(e) => setSole(e.target.value)} />
+              </div>
+              <div>
+                <label for="laces">Laces:</label>
+                <input type="color" id="laces" name="laces" value={laces} onChange={(e) => setLaces(e.target.value)} />
+              </div>
             </div>
         </div>
-    </div>
+      </div>
     </div>
   );
 }
