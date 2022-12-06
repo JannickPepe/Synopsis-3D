@@ -94,7 +94,7 @@ export default function Home() {
   const navigate = useNavigate()
   return (
     <div className="home">
-      <h1>Welcome to the Landing page</h1>
+      <h1>Welcome to the landing page</h1>
       <h2>Fixed example from: <span>https://docs.pmnd.rs/react-three-fiber/getting-started/examples</span></h2>
       <div className="shoe_content">
         <Canvas shadows camera={{ position: [2, 2, 8], fov:50 }} >
