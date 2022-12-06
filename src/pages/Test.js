@@ -25,7 +25,7 @@ function Test() {
                 </mesh>
             </Canvas>
             </div>
-            <h3>Its with three fibre, which makes shorter code than three.js</h3>
+            <h3>Its with three fibre, which render three.js syntax</h3>
             <p>Example: https://docs.pmnd.rs/react-three-fiber/getting-started/your-first-scene</p>
         </div>
     )
