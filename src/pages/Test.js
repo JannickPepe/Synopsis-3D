@@ -1,7 +1,7 @@
 import '../index.css';
-import { Suspense, useRef, useState, useEffect } from "react"
-import { Canvas, useFrame } from "@react-three/fiber"
-import { ContactShadows, Environment, useGLTF, OrbitControls } from "@react-three/drei"
+
+import { Canvas } from "@react-three/fiber";
+
 
 function Test() {
 
