@@ -62,3 +62,25 @@ h2{
 }
 
 
+.test canvas {
+  width:50%;
+  height:50%;
+}
+
+.test h1{
+  margin-top:2%;
+  margin-bottom:1%;
+  text-align:center;
+}
+
+.test h2{
+  text-align:center;
+}
+
+.test h3{
+  text-align:center;
+}
+
+.test p{
+  text-align:center;
+}

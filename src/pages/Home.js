@@ -2,7 +2,7 @@ import './home.css';
 import { Suspense, useRef, useState, useEffect } from "react"
 import { Canvas, useFrame } from "@react-three/fiber"
 import { ContactShadows, Environment, useGLTF, OrbitControls } from "@react-three/drei"
-import { HexColorPicker } from "react-colorful"
+// import { HexColorPicker } from "react-colorful"
 import { proxy, useSnapshot } from "valtio"
 import {useNavigate} from 'react-router-dom'
 
@@ -11,14 +11,14 @@ import {useNavigate} from 'react-router-dom'
 const state = proxy({
   current: null,
   items: {
-    laces: "#ffffff",
-    mesh: "#ffffff",
-    caps: "#ffffff",
+    laces: "#FF0000",
+    mesh: "#FFD700",
+    caps: "#FFD700",
     inner: "#ffffff",
-    sole: "#ffffff",
+    sole: "#FF0000",
     stripes: "#ffffff",
-    band: "#ffffff",
-    patch: "#ffffff",
+    band: "#000000",
+    patch: "#FFD700",
   },
 })
 
@@ -42,6 +42,8 @@ function Shoe() {
   })
 
   // Cursor showing current color
+  // eslint-disable-next-line no-lone-blocks
+  {/*
   const [hovered, set] = useState(null)
   useEffect(() => {
     const cursor = `<svg width="64" height="64" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0)"><path fill="rgba(255, 255, 255, 0.5)" d="M29.5 54C43.031 54 54 43.031 54 29.5S43.031 5 29.5 5 5 15.969 5 29.5 15.969 54 29.5 54z" stroke="#000"/><g filter="url(#filter0_d)"><path d="M29.5 47C39.165 47 47 39.165 47 29.5S39.165 12 29.5 12 12 19.835 12 29.5 19.835 47 29.5 47z" fill="${snap.items[hovered]}"/></g><path d="M2 2l11 2.947L4.947 13 2 2z" fill="#000"/><text fill="#000" style="white-space:pre" font-family="Inter var, sans-serif" font-size="10" letter-spacing="-.01em"><tspan x="35" y="63">${hovered}</tspan></text></g><defs><clipPath id="clip0"><path fill="#fff" d="M0 0h64v64H0z"/></clipPath><filter id="filter0_d" x="6" y="8" width="47" height="47" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/><feOffset dy="2"/><feGaussianBlur stdDeviation="3"/><feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.15 0"/><feBlend in2="BackgroundImageFix" result="effect1_dropShadow"/><feBlend in="SourceGraphic" in2="effect1_dropShadow" result="shape"/></filter></defs></svg>`
@@ -51,6 +53,7 @@ function Shoe() {
       return () => (document.body.style.cursor = `url('data:image/svg+xml;base64,${btoa(auto)}'), auto`)
     }
   }, [hovered])
+  */}
 
   // Using the GLTFJSX output here to wire in app-state and hook up events
   return (
@@ -58,8 +61,8 @@ function Shoe() {
     scale={5}
       ref={ref}
       dispose={null}
-      onPointerOver={(e) => (e.stopPropagation(), set(e.object.material.name))}
-      onPointerOut={(e) => e.intersections.length === 0 && set(null)}
+      //onPointerOver={(e) => (e.stopPropagation(), set(e.object.material.name))}
+      //onPointerOut={(e) => e.intersections.length === 0 && set(null)}
       onPointerMissed={() => (state.current = null)}
       onClick={(e) => (e.stopPropagation(), (state.current = e.object.material.name))}>
       <mesh receiveShadow castShadow geometry={nodes.shoe.geometry} material={materials.laces} material-color={snap.items.laces} />
@@ -74,6 +77,8 @@ function Shoe() {
   )
 }
 
+// eslint-disable-next-line no-lone-blocks
+{/* 
 function Picker() {
   const snap = useSnapshot(state)
   return (
@@ -83,13 +88,14 @@ function Picker() {
     </div>
   )
 }
+*/}
 
 export default function Home() {
   const navigate = useNavigate()
   return (
     <div className="home">
       <h1>Welcome to the Landing page</h1>
-      <h2>This example is directly from: <span>https://docs.pmnd.rs/react-three-fiber/getting-started/examples</span></h2>
+      <h2>Fixed example from: <span>https://docs.pmnd.rs/react-three-fiber/getting-started/examples</span></h2>
       <div className="shoe_content">
         <Canvas shadows camera={{ position: [2, 2, 8], fov:50 }} >
           <ambientLight intensity={0.7} />
@@ -101,7 +107,9 @@ export default function Home() {
           </Suspense>
           <OrbitControls minPolarAngle={Math.PI / 2} maxPolarAngle={Math.PI / 2} enableZoom={true} enablePan={false} />
         </Canvas>
+        {/*
         <Picker />
+         */}
       </div>
       <h3>To go to our shoe customizer</h3>
       <div className='shoebtn' onClick={() => navigate('/shoe')}>

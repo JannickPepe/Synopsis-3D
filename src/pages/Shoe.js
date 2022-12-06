@@ -44,14 +44,6 @@ function Shoe() {
     return (
       <div className="shoe">
         <h1>Welcome to the shoe picker page</h1>
-        {/* A test for just simply display a box with set array cords */}
-        {/* 
-        <Canvas>
-          <mesh ref={ref}>
-            <boxGeometry attach='geometry' argh={[2,2,2]}/> 
-          </mesh>
-        </Canvas>
-        */}
         <div className="wrapper">
           <div className="card">
               <div className="product-canvas">

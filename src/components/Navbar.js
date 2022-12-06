@@ -39,6 +39,9 @@ export default function Navbar() {
                         <a href="/">Home</a>
                     </li>
                     <li>
+                        <a href="/test">Test</a>
+                    </li>
+                    <li>
                         <a href="/shoe">Shoe</a>
                     </li>
                 </ul>
