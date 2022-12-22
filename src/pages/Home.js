@@ -1,10 +1,11 @@
+
 import './home.css';
-import { Suspense, useRef, useState, useEffect } from "react"
-import { Canvas, useFrame } from "@react-three/fiber"
-import { ContactShadows, Environment, useGLTF, OrbitControls } from "@react-three/drei"
-// import { HexColorPicker } from "react-colorful"
-import { proxy, useSnapshot } from "valtio"
-import {useNavigate} from 'react-router-dom'
+import { Suspense, useRef, useState, useEffect } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { ContactShadows, Environment, useGLTF, OrbitControls } from "@react-three/drei";
+// import { HexColorPicker } from "react-colorful";
+import { proxy, useSnapshot } from "valtio";
+import { useNavigate } from 'react-router-dom';
 
 // Using a Valtio state model to bridge reactivity between
 // the canvas and the dom, both can write to it and/or react to it.

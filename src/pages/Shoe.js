@@ -1,13 +1,19 @@
+
 // After we have gotten the right npm's install and our new bracnhes in package.json
 // Now we import them here
 import { Suspense, useRef, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, useGLTF } from '@react-three/drei'; // Allow us to rotate and import the Models (GLTF, its a format to load 3d models)
 
+
+
+
 // Exported code from the git bash cmd line - npx gltfjsx shoe.gltf
 function Model({ ...props }) {
+  
     const group = useRef()
     const { nodes, materials } = useGLTF('/shoe.gltf')
+    
     // Have the group wrapper around the mesh property for each materials -Also set the size of the model with Scale
     // With material-color, set the default color of the selected proptery material
     // Instead of "red" we can now add our props.customColor onto mesh ect for the props we have in the Model so we can use the color picker
@@ -26,12 +32,14 @@ function Model({ ...props }) {
   }
   
   
+
 function Shoe() {
   
     //construct your test reference with useRef method
     //const ref = useRef()
   
     // Construct an array with useState method for each of your customColor props values
+    // First scene state
     const [mesh, setMesh] = useState("#ffffff")
   
     const [stripes, setStripes] = useState("#ffffff")
